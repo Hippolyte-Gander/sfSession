@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StagiaireController!{% endblock %}
+{% block title %}Liste des stagiaires{% endblock %}
 
 {% block body %}
 
@@ -29,6 +29,34 @@
         <td scope="'row"> {{ stagiaire.numTel }} </td>
     </tr>
 {% endfor %}
-</table>    
+</table>
+
+<h4>Ajouter un stagiaire</h4>
+
+{{ form_start(formAddStagiaire) }}
+<div class="row">
+    <div class="col-sm">
+        {{ form_row(formAddStagiaire.nom) }}
+    </div>
+    <div class="col-sm">
+        {{ form_row(formAddStagiaire.prenom) }}
+    </div>
+    <div class="col-sm">
+        {{ form_row(formAddStagiaire.sexe) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm">
+        {{ form_row(formAddStagiaire.dateNaissance) }}
+        {{ form_row(formAddStagiaire.email) }}
+        {{ form_row(formAddStagiaire.numTel) }}
+    </div>
+    <div class="col-sm">
+        {{ form_row(formAddStagiaire.dateNaissance) }}
+        {{ form_row(formAddStagiaire.ville) }}
+    </div>
+</div>
+{{ form_row(formAddStagiaire.Valider) }}
+{{ form_end(formAddStagiaire) }}
 
 {% endblock %}
