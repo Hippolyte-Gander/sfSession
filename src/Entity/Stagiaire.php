@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\StagiaireRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -159,5 +160,16 @@ class Stagiaire
         $this->sessions->removeElement($session);
 
         return $this;
+    }
+
+    public function dateFormatee(){
+        $date = $this->dateNaissance->format("d/m/Y");
+        return $date;
+    }
+
+    public function getAge(){
+        $now = new \DateTime();
+        $age = date_diff($now, $this->dateNaissance, "Y");
+        return $age->format("%Y");
     }
 }

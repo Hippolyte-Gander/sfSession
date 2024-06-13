@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StagiaireController!{% endblock %}
+
+{% block body %}
+
+<h1>Liste des stagiaires</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Ville</th>
+            <th>Date de Naissance</th>
+            <th>Âge</th>
+            <th>Email</th>
+            <th>Numéro de téléphone</th>
+        </tr>
+    </thead>
+{% for stagiaire in stagiaires %}
+    <tr scope="col">
+        <td scope="'row"> {{ stagiaire.prenom }} </td>
+        <td scope="'row"> {{ stagiaire.nom }} </td>
+        <td scope="'row"> {{ stagiaire.ville }} </td>
+        <td scope="'row"> {{ stagiaire.dateFormatee }} </td>
+        <td scope="'row"> {{ stagiaire.age }} ans </td>
+        <td scope="'row"> {{ stagiaire.email }} </td>
+        <td scope="'row"> {{ stagiaire.numTel }} </td>
+    </tr>
+{% endfor %}
+</table>    
+
+{% endblock %}

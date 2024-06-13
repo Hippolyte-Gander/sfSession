@@ -25,11 +25,6 @@ class Programme
     #[ORM\ManyToOne(inversedBy: 'programmes')]
     private ?Module $module = null;
 
-    public function __construct()
-    {
-        
-    }
-
     public function getId(): ?int
     {
         return $this->id;
