@@ -18,7 +18,7 @@
     </thead>
 {% for session in sessions %}
     <tr scope="col">
-        <td scope="'row"> {{ session.titre }} </td>
+        <td scope="'row"><a href=" {{ path('show_session', {'id':session.id}) }} "> {{ session.titre }} </a></td>
         {% if session.formateur %}
             <td scope="'row"> {{ session.formateur }} </td>
         {% else %}

@@ -180,4 +180,9 @@ class Session
         $date = $this->dateFin->format("d/m/Y");
         return $date;
     }
+
+    public function duree(){
+        $duree = date_diff($this->dateDebut, $this->dateFin, "m");
+        return $duree->format("%m");
+    }
 }

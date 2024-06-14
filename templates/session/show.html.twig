@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de la session{% endblock %}
+
+{% block body %}
+
+<h1>Détail de la session</h1>
+
+<h2> {{ session.titre }} </h2>
+
+<ul>
+    {% if session.formateur %}
+        <li>Formateur : {{session.formateur}} </li>
+    {% else %}
+        <li>Aucun formateur pour la session</li>
+    {% endif %}
+    
+    <li>Date de début : {{session.dateDebutFormatee}} </li>
+    <li>Date de fin : {{session.dateFinFormatee}} </li>
+    <li>Durée : {{session.duree}} mois</li>
+    <li>Nombre de places totales : {{session.nbrPlaces}} </li>
+    {# <li>Nombre de places libres : {{session.}} </li> #}
+</ul>
+
+
+{% if session.stagiaires | length > 0 %}
+    <h3>Stagiaires inscrit(e)s à la session :</h3>
+    <ul>
+        {% for stagiaire in session.stagiaires %}
+            <li> {{stagiaire.prenom}} {{stagiaire.nom}}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    Aucun(e) stagiaire pour la session.
+{% endif %}
+
+{% if session.programmes | length > 0 %}
+    <h3>Modules de la session :</h3>
+    <ul>
+        {% for programme in session.programmes %}
+            <li> afficher programme </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    Aucun module pour la session.
+{% endif %}
+
+{% endblock %}
