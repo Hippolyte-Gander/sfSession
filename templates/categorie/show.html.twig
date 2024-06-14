@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails d'une catégorie{% endblock %}
+
+{% block body %}
+
+<h2>Modules de la catégorie "{{ categorie.titre }}"</h2>
+
+{% if categorie.modules %}
+    <ul>
+        {% for module in categorie.modules %}
+            <li><a href=" {{ path('show_module', {'id':module.id}) }} "> {{ module.titre }} </a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Il n'y a aucun module dans cete catégorie.</p>
+{% endif %}
+
+
+{% endblock %}
