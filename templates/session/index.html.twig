@@ -20,7 +20,7 @@
     <tr scope="col">
         <td scope="'row"><a href=" {{ path('show_session', {'id':session.id}) }} "> {{ session.titre }} </a></td>
         {% if session.formateur %}
-            <td scope="'row"> {{ session.formateur }} </td>
+            <td scope="'row"><a href=" {{ path('show_formateur', {'id':session.formateur.id}) }} "> {{ session.formateur }} </a></td>
         {% else %}
             <td scope="'row">Pas de formateur référent</td>
         {% endif %}

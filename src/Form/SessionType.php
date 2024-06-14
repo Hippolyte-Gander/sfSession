@@ -54,7 +54,7 @@ class SessionType extends AbstractType
                 ]])
             ->add('formateur', EntityType::class, [
                 'class' => Formateur::class,
-                'choice_label' => 'titre',
+                'choice_label' => 'email',
                 // 'multiple' => true,
                 'required' => false,
                 'attr' => [

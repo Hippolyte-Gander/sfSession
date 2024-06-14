@@ -162,6 +162,11 @@ class Stagiaire
         return $this;
     }
 
+    public function __toString(): string
+    {
+        return $this->prenom. ' '.$this->nom;
+    }
+
     public function dateFormatee(){
         $date = $this->dateNaissance->format("d/m/Y");
         return $date;
