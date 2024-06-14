@@ -170,4 +170,14 @@ class Session
 
         return $this;
     }
+
+    public function dateDebutFormatee(){
+        $date = $this->dateDebut->format("d/m/Y");
+        return $date;
+    }
+
+    public function dateFinFormatee(){
+        $date = $this->dateFin->format("d/m/Y");
+        return $date;
+    }
 }

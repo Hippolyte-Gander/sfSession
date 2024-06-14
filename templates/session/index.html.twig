@@ -1,20 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SessionController!{% endblock %}
+{% block title %}Liste des sessions{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<h1>Liste des sessions</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/laragon/www/HippolyteG/Github/sfSession/src/Controller/SessionController.php</code></li>
-        <li>Your template at <code>C:/laragon/www/HippolyteG/Github/sfSession/templates/session/index.html.twig</code></li>
-    </ul>
-</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Formateur référent</th>
+            <th>Places</th>
+            <th>Date de début</th>
+            <th>Date de fin</th>
+        </tr>
+    </thead>
+{% for session in sessions %}
+    <tr scope="col">
+        <td scope="'row"> {{ session.titre }} </td>
+        {% if session.formateur %}
+            <td scope="'row"> {{ session.formateur }} </td>
+        {% else %}
+            <td scope="'row">Pas de formateur référent</td>
+        {% endif %}
+        <td scope="'row"> {{ session.nbrPlaces }} </td>
+        <td scope="'row"> {{ session.dateDebutFormatee }} </td>
+        <td scope="'row"> {{ session.dateFinFormatee }} </td>
+        {# <td scope="'row">  <a href="{{ path('edit_stagiaire', {'id': stagiaire.id} ) }}">Edit</a> </td> #}
+    </tr>
+{% endfor %}
+</table>
+
+{# <p><a href="{{ path('new_stagiaire') }}">Ajouter un stagiaire</a></p> <br> #}
+
 {% endblock %}
+ {# à rajouter :
+ - lien vers détail session
+ - afficher nbrPlaces dispo / nbrPlaces #}
