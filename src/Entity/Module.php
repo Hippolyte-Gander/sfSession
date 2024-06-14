@@ -24,6 +24,9 @@ class Module
     #[ORM\OneToMany(targetEntity: Programme::class, mappedBy: 'module')]
     private Collection $programmes;
 
+    #[ORM\ManyToOne(inversedBy: 'modules')]
+    private ?Categorie $categorie = null;
+
     public function __construct()
     {
         $this->programmes = new ArrayCollection();
@@ -72,6 +75,18 @@ class Module
                 $programme->setModule(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

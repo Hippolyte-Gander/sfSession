@@ -27,7 +27,7 @@
     <h3>Stagiaires inscrit(e)s à la session :</h3>
     <ul>
         {% for stagiaire in session.stagiaires %}
-            <li> {{stagiaire.prenom}} {{stagiaire.nom}}</li>
+            <li><a href=" {{ path('show_stagiaire', {'id': stagiaire.id}) }} "> {{stagiaire.prenom}} {{stagiaire.nom}} </a></li>
         {% endfor %}
     </ul>
 {% else %}
@@ -38,7 +38,7 @@
     <h3>Modules de la session :</h3>
     <ul>
         {% for programme in session.programmes %}
-            <li> afficher programme </li>
+            <li><a href=" {{ path('show_module', {'id':programme.module.id}) }} "> {{ programme.module.titre }} </a></li>
         {% endfor %}
     </ul>
 {% else %}

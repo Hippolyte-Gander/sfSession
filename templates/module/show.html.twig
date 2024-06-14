@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails d'un module{% endblock %}
+
+{% block body %}
+
+
+<h2>Détails du module "{{ module.titre }}"</h2>
+
+<ul>
+    <li>Catégorie : {{module.categorie.titre}} </li>
+</ul>
+
+{# pas sûr que cette partie fonctionne #}
+{% if module.programmes | length > 0 %}
+    <h3>Module présent dans les sessions :</h3>
+    <ul>
+        {% for session in module.programmes %}
+        <li><a href=" {{ path('show_session', {'id':session.session.id}) }} "> {{session.session.titre}} </a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    Aucune session contenant le module.
+{% endif %}
+{% endblock %}
