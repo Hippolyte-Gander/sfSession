@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Stagiaire;
+use App\Form\StagiaireType;
 use App\Repository\StagiaireRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,6 +48,14 @@ class StagiaireController extends AbstractController
         return $this->render('stagiaire/new.html.twig', [
             'formAddStagiaire' => $form,
             'edit' => $stagiaire->getId()
+        ]);
+    }
+
+    #[Route('/stagiaire/{id}', name: 'show_stagiaire')]
+    public function show(Stagiaire $stagiaire): Response
+    {
+        return $this->render('stagiaire/show.html.twig',[
+            'stagiaire' => $stagiaire
         ]);
     }
 }

@@ -20,43 +20,18 @@
     </thead>
 {% for stagiaire in stagiaires %}
     <tr scope="col">
-        <td scope="'row"> {{ stagiaire.prenom }} </td>
+        <td scope="'row"><a href=" {{ path('show_stagiaire', {'id': stagiaire.id}) }} "> {{ stagiaire.prenom }} </a></td>
         <td scope="'row"> {{ stagiaire.nom }} </td>
         <td scope="'row"> {{ stagiaire.ville }} </td>
         <td scope="'row"> {{ stagiaire.dateFormatee }} </td>
         <td scope="'row"> {{ stagiaire.age }} ans </td>
         <td scope="'row"> {{ stagiaire.email }} </td>
         <td scope="'row"> {{ stagiaire.numTel }} </td>
+        <td scope="'row">  <a href="{{ path('edit_stagiaire', {'id': stagiaire.id} ) }}">Edit</a> </td>
     </tr>
 {% endfor %}
 </table>
 
-<h4>Ajouter un stagiaire</h4>
-
-{{ form_start(formAddStagiaire) }}
-<div class="row">
-    <div class="col-sm">
-        {{ form_row(formAddStagiaire.nom) }}
-    </div>
-    <div class="col-sm">
-        {{ form_row(formAddStagiaire.prenom) }}
-    </div>
-    <div class="col-sm">
-        {{ form_row(formAddStagiaire.sexe) }}
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm">
-        {{ form_row(formAddStagiaire.dateNaissance) }}
-        {{ form_row(formAddStagiaire.email) }}
-        {{ form_row(formAddStagiaire.numTel) }}
-    </div>
-    <div class="col-sm">
-        {{ form_row(formAddStagiaire.dateNaissance) }}
-        {{ form_row(formAddStagiaire.ville) }}
-    </div>
-</div>
-{{ form_row(formAddStagiaire.Valider) }}
-{{ form_end(formAddStagiaire) }}
+<p><a href="{{ path('new_stagiaire') }}">Ajouter un stagiaire</a></p> <br>
 
 {% endblock %}
