@@ -11,7 +11,7 @@
         <tr>
             <th>Titre</th>
             <th>Formateur référent</th>
-            <th>Places</th>
+            <th>Places prises</th>
             <th>Date de début</th>
             <th>Date de fin</th>
         </tr>
@@ -24,17 +24,16 @@
         {% else %}
             <td scope="'row">Pas de formateur référent</td>
         {% endif %}
-        <td scope="'row"> {{ session.nbrPlaces }} </td>
+        <td scope="'row"> {{ session.nbrPlacesLibres }} /  {{ session.nbrPlaces }}</td>
         <td scope="'row"> {{ session.dateDebutFormatee }} </td>
         <td scope="'row"> {{ session.dateFinFormatee }} </td>
-        {# <td scope="'row">  <a href="{{ path('edit_stagiaire', {'id': stagiaire.id} ) }}">Edit</a> </td> #}
+        <td scope="'row">  <a href="{{ path('edit_session', {'id': session.id} ) }}">Edit</a> </td>
     </tr>
 {% endfor %}
 </table>
 
-{# <p><a href="{{ path('new_stagiaire') }}">Ajouter un stagiaire</a></p> <br> #}
+<p><a href="{{ path('new_session') }}">Ajouter une session</a></p> <br>
 
 {% endblock %}
  {# à rajouter :
- - lien vers détail session
  - afficher nbrPlaces dispo / nbrPlaces #}

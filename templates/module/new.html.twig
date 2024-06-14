@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un module{% endblock %}
+
+{% block body %}
+
+<h4>Ajouter un module</h4>
+
+{{ form_start(formAddModule) }}
+<div class="row">
+    <div class="col-sm">
+        {{ form_row(formAddModule.titre) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm">
+        {{ form_row(formAddModule.categorie) }}
+    </div>
+</div>
+{{ form_row(formAddModule.Valider) }}
+{{ form_end(formAddModule) }}
+
+{% endblock %}
+
+

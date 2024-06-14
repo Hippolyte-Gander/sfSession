@@ -34,8 +34,8 @@
     Aucun(e) stagiaire pour la session.
 {% endif %}
 
+<h3>Modules de la session :</h3>
 {% if session.programmes | length > 0 %}
-    <h3>Modules de la session :</h3>
     <ul>
         {% for programme in session.programmes %}
             <li><a href=" {{ path('show_module', {'id':programme.module.id}) }} "> {{ programme.module.titre }} </a></li>

@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Length;
 
 #[ORM\Entity(repositoryClass: SessionRepository::class)]
 class Session
@@ -184,5 +185,11 @@ class Session
     public function duree(){
         $duree = date_diff($this->dateDebut, $this->dateFin, "m");
         return $duree->format("%m");
+    }
+
+    public function nbrPlacesLibres(){
+        $nbrPlacesPrises = count($this->stagiaires);
+        // $nbrPlacesLibres = $this->nbrPlaces - $nbrPlacesPrises;
+        return $nbrPlacesPrises;
     }
 }

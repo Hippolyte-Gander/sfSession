@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Categorie;
+use App\Form\CategorieType;
 use App\Repository\CategorieRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +21,36 @@ class CategorieController extends AbstractController
             'categories' => $categories
         ]);
     }
+
+    #[Route('/categorie/new', name: 'new_categorie')]
+    #[Route('/categorie/{id}/edit', name: 'edit_categorie')]
+    public function new(Categorie $categorie = null, Request $request, EntityManagerInterface $entityManager): Response
+    { 
+        if (!$categorie){
+            $categorie = new Categorie();
+        }
+
+        $form =$this->createForm(CategorieType::class, $categorie);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $categorie = $form->getData();
+            // prepare en PDO
+            $entityManager->persist($categorie);
+            // execute en PDO
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_categorie');
+        }
+
+        return $this->render('categorie/new.html.twig', [
+            'formAddCategorie' => $form,
+            'edit' => $categorie->getId()
+        ]);
+    }
+
 
     #[Route('/categorie/{id}', name: 'show_categorie')]
     public function show(Categorie $categorie): Response
